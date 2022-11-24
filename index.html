@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <script type="text/javascript">
+
+    function getJson() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+
+        if (xmlhttp.readyState == 4) {
+          if (xmlhttp.status == 200) {
+            var data = JSON.parse(xmlhttp.responseText);
+
+            var elem = document.getElementById("output");
+
+              for (let i = 0; i < 4; i++) {
+                elem.innerHTML += "<div>" + data[0].hokuto[i] + "</div>";
+              }
+
+            } else {
+        }
+        }
+      }
+      xmlhttp.open("GET", "hokuto.json");
+      xmlhttp.send();
+    }
+
+    function async(f) {
+      setTimeout(f, 1000);
+    }
+  </script>
+</head>
+
+<body>
+
+  <input id="Button_Get" type="button" value="北斗取得" onclick="getJson();" />
+  <hr />
+  <div id="output"></div>
+</body>
+
+</html>
